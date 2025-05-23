@@ -1,38 +1,21 @@
 # complete_application
 complete application deployed using k8s
 
-# connect the free tier ec2, window pc, ubuntu pc, mac through wireguard
-A) Installation
-Windows: Install the wireguard on the windows pc
-Ubuntu: Install the wireguard on the ubuntu pc
+# Setup
+1) Ubuntu Pc --> worker node
+2) Ubuntu VM ( 4GB, 25GB, 4CPU) --> control plane node
 
-B) Generate Public Key and Private Key
-Ubuntu : wg genkey | tee privatekey | wg pubkey > publickey
-Windows : In GUI, click "Add Tunnel" -> "Add Empty Tunnel", it generate both types of keys.
+# set the hostname of the machines
+sudo hostnamectl set-hostname master-node/worker-node
 
-C) Configuration file
-a) Ubuntu
-  1) create a file at /etc/wireguard/wg0.conf
-  2) write this code :
-     [Interface]
-     PrivateKey = <Ubuntu_private_key>
-     Address = 10.0.0.1/24
-     ListenPort = 51820
+# setup the tailscale
+1) create the tailscale free account
+2) install the tailnet on the
+     ubuntu: curl -fsSL https://tailscale.com/install.sh | sh
+     windows: From website
+3) sudo tailscale up, connect the devices
+4) Make sure the magicdns is enabled.
 
-     [Peer]
-     PublicKey = <Windows_public_key>
-     AllowedIPs = 10.0.0.2/32
-     
-b) Windows: In GUI
-  [Interface]
-  PrivateKey = <Windows_private_key>
-  Address = 10.0.0.2/24
-  DNS = 1.1.1.1
 
-  [Peer]
-  PublicKey = <Ubuntu_public_key>
-  AllowedIPs = 10.0.0.1/32
-  Endpoint = <Ubuntu_Public_IP>:51820
-  PersistentKeepalive = 25
 
 
