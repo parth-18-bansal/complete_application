@@ -40,6 +40,41 @@ sudo hostnamectl set-hostname master-node/worker-node
 
      sudo sysctl --system
 
+# Install the containerd
+sudo apt install containerd --> this will create and manage the containers
+
+# Configuring the Containerd
+sudo mkdir -p /etc/containerd
+containerd config default | sudo tee /etc/containerd/config.toml
+sudo systemctl restart containerd
+sudo systemctl enable containerd
+
+# install these if not installed
+sudo apt install -y apt-transport-https curl --> apt-transport-https, so that apt can connect to secure package repositories that uses https. curl to downlaod data from the internet.
+
+# configuring apt things so that apt install official package only
+This save a gpg key which apt used to verify that it is downloading a official kubernetes related packages.
+sudo curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo tee /etc/apt/keyrings/kubernetes-apt-keyring.asc > /dev/null
+
+Here we are telling the apt from which repository (APT repositories) to download the k8s related packages.
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.asc] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+# now you can securly installs the k8s packages
+sudo apt update
+sudo apt install -y kubelet kubeadm kubectl
+
+It hold the upgradation of the packages, so now these packages will not be upgrade by apt-upgrade. this is because, sometimes things get break when new version of some package upgrade automatically.
+sudo apt-mark hold kubelet kubeadm kubectl [use with caution]
+
+we can remove the hold or check the hold packages
+sudo apt-mark unhold kubelet kubeadm kubectl
+apt-mark showhold
+
+
+
+
+
+
 
 
 
