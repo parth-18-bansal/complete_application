@@ -16,6 +16,9 @@ sudo hostnamectl set-hostname master-node/worker-node
 3) sudo tailscale up, connect the devices
 4) Make sure the magicdns is enabled.
 
+   ![image](https://github.com/user-attachments/assets/26e117e6-ee36-432a-9a01-84a45aece391)
+
+
 
 
 
