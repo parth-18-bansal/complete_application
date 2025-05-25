@@ -70,6 +70,7 @@ sudo apt-mark hold kubelet kubeadm kubectl [use with caution]
 we can remove the hold or check the hold packages
 
 sudo apt-mark unhold kubelet kubeadm kubectl
+
 apt-mark showhold
 
 
