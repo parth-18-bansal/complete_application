@@ -64,9 +64,11 @@ sudo apt update
 sudo apt install -y kubelet kubeadm kubectl
 
 It hold the upgradation of the packages, so now these packages will not be upgrade by apt-upgrade. this is because, sometimes things get break when new version of some package upgrade automatically.
+
 sudo apt-mark hold kubelet kubeadm kubectl [use with caution]
 
 we can remove the hold or check the hold packages
+
 sudo apt-mark unhold kubelet kubeadm kubectl
 apt-mark showhold
 
