@@ -73,6 +73,46 @@ sudo apt-mark unhold kubelet kubeadm kubectl
 
 apt-mark showhold
 
+# add net.ipv4.ip_forward = 1 in k8.conf
+This if for enabling the ip forwarding. add this in each node, this enable the node to route the request.
+
+# sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+run this in the master node to start the control plane. Pods get ip according to the pod-network-cidr attribute
+
+this command setup:
+a) apiserver
+b) scheduler
+c) controller-manager
+d) etcd
+e) Generates the certificates and config files.
+
+# To setup the kubectl, so that it know which cluster it is connected to.
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+# Installation ssh on the vm ubuntu (Optional)
+sudo apt update
+sudo apt install openssh-server -y
+sudo systemctl enable ssh
+sudo systemctl start ssh
+
+# If you want to run kubectl commands from the other machines or ubuntu worker node (optional)
+scp <username>@<tailscale-ip-of-VM>:/home/ubuntu/.kube/config ~/.kube/config-cluster
+
+{if initially have the .kube folder in the machine from which you want to run the kubectl commands then merge all the config files in the .kube folder}
+export KUBECONFIG=~/.kube/config:~/.kube/config-cluster
+kubectl config view --flatten > ~/.kube/config-merged
+mv ~/.kube/config-merged ~/.kube/config
+
+# for doing ssh between the machines (optional)
+ssh <username>@<tailscale-ip-of-VM>
+
+
+
+
+
+
 
 
 
