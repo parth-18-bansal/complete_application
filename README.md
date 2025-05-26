@@ -98,15 +98,18 @@ sudo systemctl enable ssh
 sudo systemctl start ssh
 
 # If you want to run kubectl commands from the other machines or ubuntu worker node (optional)
-scp <username>@<tailscale-ip-of-VM>:/home/ubuntu/.kube/config ~/.kube/config-cluster
+scp username@tailscale-ip-of-VM:/home/ubuntu/.kube/config ~/.kube/config-cluster
 
 {if initially have the .kube folder in the machine from which you want to run the kubectl commands then merge all the config files in the .kube folder}
+
 export KUBECONFIG=~/.kube/config:~/.kube/config-cluster
+
 kubectl config view --flatten > ~/.kube/config-merged
+
 mv ~/.kube/config-merged ~/.kube/config
 
 # for doing ssh between the machines (optional)
-ssh <username>@<tailscale-ip-of-VM>
+ssh username@tailscale-ip-of-VM
 
 
 
