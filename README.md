@@ -3,7 +3,7 @@ complete application deployed using k8s
 
 # Setup
 1) Ubuntu Pc --> worker node
-2) Ubuntu VM ( 4GB, 25GB, 4CPU) --> control plane node
+2) Ubuntu VM using multipass( 4GB, 25GB, 4CPU) --> control plane node
 
 # set the hostname of the machines
 sudo hostnamectl set-hostname master-node/worker-node
