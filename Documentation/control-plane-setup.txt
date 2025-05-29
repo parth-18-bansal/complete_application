@@ -1,0 +1,13 @@
+# install and start the tailscale
+
+# open the following ports in the control plane node.
+6443 = kube-apiserver
+10250 = kubelet
+10259 = scheduler
+10257 = controller-manager
+2379-2380 = etcd
+
+sudo ufw enable
+sudo ufw allow <port>/tcp
+
+# 
