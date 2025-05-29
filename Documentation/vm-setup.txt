@@ -1,0 +1,3 @@
+# Download the Multipass
+# Create the VM
+    * multipass launch --cpus 4 --disk 25G --memory 4G
