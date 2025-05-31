@@ -10,4 +10,16 @@
 sudo ufw enable
 sudo ufw allow <port>/tcp
 
-# 
+# Swap disbaling
+There is the swap in the linux, whenever RAMs get full, the operating system assign some space of the harddisk as RAM. And this special
+RAM is called the swap. We disable it in the kubernetes, because scheduler assign the pods according to the nodes statistic like
+RAM, CPU, Harddisk etc. so swap enabling can cause confusion for the scheduler to decide which node to use. So by default we need swap off
+But there are some configuration, by which we can setup the kubernetes node with swap on also.
+
+# Pods Network Filtering and Container Storage Setup [https://docs.google.com/document/d/1j2M5BwOtp4LQ5zic3ZSp4s2SjD_oAHYNHEB2hitrOak/edit?usp=sharing]
+There are two modules that we are loading here and we are instructing that these package should always be loaded whenever system boots
+* Overlay
+It is for setuping the OverlayFS filesystem, it used by the containerd for managing the images and storage.
+
+* br_netfilter
+it allow the linux kernel's netfilter subsystem to implement the iptable rules on the pod network.
