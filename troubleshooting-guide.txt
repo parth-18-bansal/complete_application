@@ -1,0 +1,8 @@
+1) journalctl -u kubelet -b --no-pager
+journalctl to see the logs of any systemd service.
+
+2) kubectl describe
+It help to see the information of any resource and also see the errors
+
+3) kubectl log <pod-name> -c <container name>
+it help to see the logs of the contianer running inside the pod
