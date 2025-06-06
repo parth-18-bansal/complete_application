@@ -8,7 +8,7 @@ sudo tailscale up
 sudo ufw enable
 
 sudo ufw allow 22/tcp
-sudo ufw allow 6643/tcp
+sudo ufw allow 6443/tcp
 sudo ufw allow 10250/tcp
 sudo ufw allow 10259/tcp
 sudo ufw allow 10257/tcp
