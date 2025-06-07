@@ -111,7 +111,7 @@ comments
 sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
 
 # Initialising the Control Plane
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=172.31.89.68 --node-name master
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=100.104.197.42 --node-name master-node
 
 # Copy the kubeadm join command
 
