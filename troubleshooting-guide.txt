@@ -6,3 +6,7 @@ It help to see the information of any resource and also see the errors
 
 3) kubectl log <pod-name> -c <container name>
 it help to see the logs of the contianer running inside the pod
+
+4) To check which process is using the particular port or kill that process
+sudo lsof -i :6443
+sudo kill -9 PID
