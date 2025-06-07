@@ -1,3 +1,22 @@
-# Download the Multipass
+# Download the Multipass and virtual box for windows 11 home
 # Create the VM
     * multipass launch --cpus 4 --disk 25G --memory 4G --name master-node
+
+IPS
+A) ubuntu machine
+1) Public ip: ip of the router.
+2) Internal Ip or private ip: assign by the router
+3) tailscale ip
+
+Flow: 198.x.x.x (host ip) --> x.x.x.x (router public ip) --> request to the internet
+
+B) Virtual Machine:
+1) Internal Ip: assigned by the virtual box
+2) tailscal ip
+
+Flow: If virtual machine have to talk to the internet then it make the request, and host will act as a router and nat, it change the source ip from the interal ip to it own private ip and send the packet to the router then router do the nat change the source ip to it public ip.
+
+10.x.x.x(private vm ip) --> 198.x.x.x (host private ip)
+198.x.x.x(host private ip --> x.x.x.x (router public ip) --> request to the internet
+
+
