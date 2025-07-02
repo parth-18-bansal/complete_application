@@ -114,6 +114,18 @@ sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
 # pod netowrk cidr should not contain any private ip of the nodes or anything
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<Tailscale-ip> --node-name master-node
 
+#set the internal ip of the control plane equal to the its tailscale ip
+sudo nano /etc/default/kubelet
+KUBELET_EXTRA_ARGS=--node-ip=100.100.100.10
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
+
+optional
+kubectl delete node master-node
+
+
+
 # Copy the kubeadm join command
 
 # Setting up the kubectl through the kubeconfig file
