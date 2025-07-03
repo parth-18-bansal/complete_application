@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database
+  namespace: yaobank
+spec:
+  selector:
+    matchLabels:
+      app: database
+      version: v1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: database
+        version: v1
+    spec:
+      serviceAccountName: database
+      containers:
+      - name: database
+        image: calico/yaobank-database:multiarch
+        env:
+        - name: ETCD_UNSUPPORTED_ARCH
+          value: "arm64"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 2379
+        command: ["etcd"]
+        args:
+          - "-advertise-client-urls"
+          - "http://database:2379"
+          - "-listen-client-urls"
+          - "http://0.0.0.0:2379"
+      nodeSelector:
+        kubernetes.io/hostname: parth-vostro-3578
