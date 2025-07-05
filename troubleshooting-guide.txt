@@ -24,5 +24,30 @@ sudo rm -rf /etc/kubernetes/ \
 sudo systemctl start containerd   # or docker
 sudo systemctl start kubelet
 
-5) kubectl exec -n <namespace> -it <pod-name> -- /bin/sh
+6) kubectl exec -n <namespace> -it <pod-name> -- /bin/sh
 To go inside the pod.
+
+7) To create a testing pod on the master-node for checking the connectivity:
+kubectl run <name of pod> --image=busybox:1.28 --restart=Never -n <namespace> \
+  --overrides='
+{
+  "apiVersion": "v1",
+  "spec": {
+    "nodeName": "master-node",
+    "containers": [{
+      "name": "dns-test",
+      "image": "busybox:1.28",
+      "command": ["sleep", "3600"]
+    }],
+    "tolerations": [{
+      "key": "node-role.kubernetes.io/master",
+      "operator": "Exists",
+      "effect": "NoSchedule"
+    }]
+  }
+}'
+
+Then we can go inside this pod and ping some pods in the master node to check whether there is node-node connetivity issue or the master's pods issue. After that we can delete that pod
+
+kubectl delete pod <name> -n <namespace>
+
