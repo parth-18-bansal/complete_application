@@ -25,3 +25,4 @@ sudo systemctl start containerd   # or docker
 sudo systemctl start kubelet
 
 5) kubectl exec -n <namespace> -it <pod-name> -- /bin/sh
+To go inside the pod.
