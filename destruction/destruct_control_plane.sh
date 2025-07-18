@@ -48,7 +48,7 @@ echo "Control plane has been reset to a clean state."
 
 
 # reboot the system
-sudo reboot
+# sudo reboot
 
 
 
