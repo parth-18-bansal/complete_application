@@ -44,9 +44,13 @@ rm -f runc.amd64
 rm -f cni-plugins-linux-amd64-v1.5.0.tgz
 rm -f custom-resources.yaml
 
+echo "Control plane has been reset to a clean state."
+
 
 # reboot the system
 sudo reboot
+
+
 
 
 
