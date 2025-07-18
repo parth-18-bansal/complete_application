@@ -111,7 +111,20 @@ comments
 sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
 
 # Initialising the Control Plane
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=100.104.197.42 --node-name master-node
+# pod netowrk cidr should not contain any private ip of the nodes or anything
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<Tailscale-ip control plane> --node-name master-node
+
+#set the internal ip of the control plane equal to the its tailscale ip
+sudo nano /etc/default/kubelet
+KUBELET_EXTRA_ARGS=--node-ip=<tailscale control plane ip>
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
+
+optional
+kubectl delete node master-node
+
+
 
 # Copy the kubeadm join command
 
