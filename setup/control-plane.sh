@@ -131,6 +131,8 @@ kubeadm version
 kubelet --version
 kubectl version --client
 
+sudo systemctl enable --now kubelet
+
 
 
 
@@ -141,6 +143,7 @@ it configured the crictl then when we ask it to inspect pods, containers, or ima
 at /var/run/containerd/containerd.sock
 comments
 
+echo " Configuring the crictl... "
 sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
 
 
