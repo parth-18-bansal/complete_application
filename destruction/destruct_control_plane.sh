@@ -43,6 +43,8 @@ rm -f containerd.service
 rm -f runc.amd64
 rm -f cni-plugins-linux-amd64-v1.5.0.tgz
 rm -f custom-resources.yaml
+sudo rm -f /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
 
 echo "Control plane has been reset to a clean state."
 

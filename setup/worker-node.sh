@@ -83,7 +83,27 @@ kubeadm version
 kubelet --version
 kubectl version --client
 
+# *************************************************************************
+# # 4. Get Tailscale IP
+# TAILSCALE_IP=$(tailscale ip -4 | head -n 1)
+
+# # 5. Configure kubelet to use Tailscale IP
+# cat <<EOF | sudo tee /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+# [Service]
+# Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml --node-ip=$TAILSCALE_IP"
+# EOF
+
+# # 6. Reload and restart kubelet
+# sudo systemctl daemon-reexec
+# sudo systemctl daemon-reload
+# sudo systemctl restart kubelet
+
+# # 7.Show IP confirmation
+# echo "Tailscale IP set for kubelet: $TAILSCALE_IP"
+# ****************************************************************************************************************
+
 # Configure crictl to work with containerd
+echo " Configuring the crictl... "
 sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
 
 

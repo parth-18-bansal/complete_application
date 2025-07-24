@@ -154,7 +154,7 @@ sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
 
 # pod netowrk cidr should not contain any private ip of the nodes or anything
 
-# sudo kubeadm init --pod-network-cidr=198.19.16.0/21 --apiserver-advertise-address=<Tailscale-ip control plane> --node-name Parth-hp
+# sudo kubeadm init --pod-network-cidr=198.19.16.0/21 --apiserver-advertise-address=<Tailscale-ip control plane> --node-name <any-lowercase-hypen-alpnum-name>
 
 
 
