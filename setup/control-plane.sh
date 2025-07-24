@@ -159,7 +159,7 @@ sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
 
 
 
-#set the internal ip of the control plane equal to the its tailscale ip
+#set the internal ip of the control plane equal to the its tailscale ip (optional if in given file kubelet_extra_arg is not equal to the tailscale ip)
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 
 # sudo nano /etc/default/kubelet

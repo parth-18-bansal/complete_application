@@ -107,10 +107,30 @@ echo " Configuring the crictl... "
 sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
 
 
-
+# joing the worker-node
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# kubeadm join
+# touch join-config.yaml
+
+# nano ./join-config.yaml
+
+# apiVersion: kubeadm.k8s.io/v1beta4
+# kind: JoinConfiguration
+# discovery:
+#   bootstrapToken:
+#     token: nu4dec.mmm...<token from the join command>
+#     apiServerEndpoint: <tailscale-ip-control-plane>:6443
+#     caCertHashes:
+#       - sha256:12344...<cert from the join command>
+# nodeRegistration:
+#   name: parth-vostro-3578
+#   kubeletExtraArgs:
+#     node-ip: <tailscale-ip-worker-node>
+
+
+
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # if token expiries (time is 24 hrs) or lost the token command to generate the join command
 #kubeadm token create --print-join-command
