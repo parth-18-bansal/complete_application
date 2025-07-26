@@ -33,16 +33,30 @@ kubectl run <name of pod> --image=busybox:1.28 --restart=Never -n <namespace> \
 {
   "apiVersion": "v1",
   "spec": {
-    "nodeName": "master-node",
+    "nodeName": "<name of the control plane> node",
     "containers": [{
       "name": "dns-test",
       "image": "busybox:1.28",
       "command": ["sleep", "3600"]
     }],
     "tolerations": [{
-      "key": "node-role.kubernetes.io/master",
+      "key": "node-role.kubernetes.io/control-plane",
       "operator": "Exists",
       "effect": "NoSchedule"
+    }]
+  }
+}'
+
+For the worker-node
+kubectl run <name of pod> --image=busybox:1.28 -n <name space> --restart=Never --overrides='
+{
+  "apiVersion": "v1",
+  "spec": {
+    "nodeName": "<name of the worker node>",
+    "containers": [{
+      "name": "pod-d",
+      "image": "busybox:1.28",
+      "command": ["sleep", "3600"]
     }]
   }
 }'
