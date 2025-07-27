@@ -49,6 +49,7 @@ rm -f cni-plugins-linux-amd64-v1.5.0.tgz
 echo "[9/9] Cleaning APT sources and cache..."
 sudo rm -f /etc/apt/sources.list.d/kubernetes.list
 sudo rm -f /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+sudo rm -f /home/parth/join-config.yaml
 sudo apt-get autoremove -y
 sudo apt-get clean
 
