@@ -131,7 +131,7 @@ sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
 
 # nano ./join-config.yaml
 
-# apiVersion: kubeadm.k8s.io/v1beta4
+# apiVersion: kubeadm.k8s.io/v1beta3
 # kind: JoinConfiguration
 # discovery:
 #   bootstrapToken:
@@ -144,6 +144,8 @@ sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
 #   kubeletExtraArgs:
 #     node-ip: <tailscale-ip-worker-node>
 
+
+# sudo kubeadm join --config ./join-config.yaml
 
 
 
