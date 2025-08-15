@@ -212,3 +212,19 @@ comments
 #       encapsulation: None
 # EOF
 
+# cat <<EOF | kubectl apply -f -
+# apiVersion: operator.tigera.io/v1
+# kind: Installation
+# metadata:
+#   name: default
+# spec:
+#   calicoNetwork:
+#     containerIPForwarding: Enabled
+#     ipPools:
+#     - cidr: 198.19.16.0/21
+#       natOutgoing: Enabled
+#       encapsulation: None
+#     nodeAddressAutodetectionV4:
+#       interface: "tailscale0"
+
+# EOF
