@@ -223,8 +223,7 @@ comments
 #     ipPools:
 #     - cidr: 198.19.16.0/21
 #       natOutgoing: Enabled
-#       encapsulation: None
+#       encapsulation: VXLANCrossSubnet
 #     nodeAddressAutodetectionV4:
 #       interface: "tailscale0"
-
 # EOF

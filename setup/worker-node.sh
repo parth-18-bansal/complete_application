@@ -4,12 +4,12 @@
 # Open the required ports
 # -----------------------------------------------------------------------------------------------------------------------------------------------
 
-sudo ufw enable
-sudo ufw allow 22/tcp
-sudo ufw allow 10250/tcp
-sudo ufw allow 10256/tcp
-sudo ufw allow 30000:32767/tcp
-sudo ufw allow 30000:32767/udp
+# sudo ufw enable
+# sudo ufw allow 22/tcp
+# sudo ufw allow 10250/tcp
+# sudo ufw allow 10256/tcp
+# sudo ufw allow 30000:32767/tcp
+# sudo ufw allow 30000:32767/udp
 
 
 
